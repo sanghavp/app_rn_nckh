@@ -70,10 +70,14 @@ const NativeListItem: FC<DemoListItem> = ({ item, sectionIndex, handleScroll }) 
       <Text onPress={() => handleScroll(sectionIndex)} preset="bold" style={$menuContainer}>
         {item.name}
       </Text>
+      
       {item.useCases.map((u, index) => (
         <ListItem
           key={`section${sectionIndex}-${u}`}
-          onPress={() => handleScroll(sectionIndex, index + 1)}
+          onPress={() => {
+            console.log("aaaaaa");
+            return handleScroll(sectionIndex, index + 1)
+          }}
           text={u}
           rightIcon={isRTL ? "caretLeft" : "caretRight"}
         />
@@ -181,12 +185,15 @@ export const DemoShowroomScreen: FC<DemoTabScreenProps<"DemoShowroom">> =
           <View style={[$drawer, $drawerInsets]}>
             <View style={$logoContainer}>
               <Image source={logo} style={$logoImage} />
+              <Text>
+                "aaaaa"
+              </Text>
             </View>
-
             <FlatList<{ name: string; useCases: string[] }>
               ref={menuRef}
               contentContainerStyle={$flatListContentContainer}
-              data={Object.values(Demos).map((d) => ({
+              data={Object.values(Demos).map((d) => (
+                {
                 name: d.name,
                 useCases: d.data.map((u) => u.props.name),
               }))}
@@ -217,8 +224,8 @@ export const DemoShowroomScreen: FC<DemoTabScreenProps<"DemoShowroom">> =
             renderSectionHeader={({ section }) => {
               return (
                 <View>
-                  <Text preset="heading" style={$demoItemName}>
-                    {section.name}
+                  <Text preset="heading" style={$demoItemName} >
+                    {section.name + 'aaaaa'}
                   </Text>
                   <Text style={$demoItemDescription}>{section.description}</Text>
                 </View>
