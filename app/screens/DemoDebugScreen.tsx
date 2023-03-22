@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import * as Application from "expo-application"
 import { Linking, Platform, TextStyle, View, ViewStyle } from "react-native"
-import { Button, ListItem, Screen, Text } from "../components"
+import { Button, ListItem, Screen, Text, ScanQrCode } from "../components"
 import { DemoTabScreenProps } from "../navigators/DemoNavigator"
 import { colors, spacing } from "../theme"
 import { isRTL } from "../i18n"
@@ -45,6 +45,7 @@ export const DemoDebugScreen: FC<DemoTabScreenProps<"DemoDebug">> = function Dem
         onPress={() => openLinkInBrowser("https://github.com/infinitered/ignite/issues")}
       />
       <Text style={$title} preset="heading" tx="demoDebugScreen.title" />
+      <ScanQrCode />
       <View style={$itemsContainer}>
         <ListItem
           LeftComponent={

@@ -161,7 +161,8 @@ android {
                 }
             }
         }
-        missingDimensionStrategy 'react-native-camera'
+        missingDimensionStrategy 'react-native-camera', 'mlkit'
+        // missingDimensionStrategy 'react-native-camera'
     }
 
     if (isNewArchitectureEnabled()) {
